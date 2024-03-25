@@ -1,6 +1,7 @@
 import React from "react";
 import Header from "../Shared/Header/Header";
 import { Link } from "react-router-dom";
+import Navbar from "../Shared/Navbar/Navbar";
 
 const Login = () => {
   const handleLogin = (e) => {
@@ -14,7 +15,8 @@ const Login = () => {
   return (
     <div>
       <Header></Header>
-      <div className="hero min-h-screen">
+      <Navbar></Navbar>
+      <div className="hero">
         <div className="hero-content lg:w-1/2 flex-col lg:flex-row-reverse">
           <div className="card shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
             <h1 className="text-3xl font-bold text-center pt-5 p-3">

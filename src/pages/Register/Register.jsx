@@ -1,20 +1,25 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Header from "../Shared/Header/Header";
+import Navbar from "../Shared/Navbar/Navbar";
 
 const Regsiter = () => {
   const handleRegister = (e) => {
     e.preventDefault();
     console.log(e.currentTarget);
     const form = new FormData(e.currentTarget);
-    console.log(form.get("email"));
-    console.log(form.get("pass"));
+    const name = form.get('name');
+    const photo= form.get('photo');
+    const email= form.get('email');
+    const password = form.get('password');
+    console.log(name, email, photo, password)
   };
 
   return (
     <div>
       <Header></Header>
-      <div className="hero min-h-screen">
+      <Navbar></Navbar>
+      <div className="hero">
         <div className="hero-content lg:w-1/2 flex-col lg:flex-row-reverse">
           <div className="card shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
             <h1 className="text-3xl font-bold text-center pt-5 p-3">
