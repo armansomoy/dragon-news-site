@@ -1,18 +1,31 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import Header from "../Shared/Header/Header";
 import Navbar from "../Shared/Navbar/Navbar";
+import { AuthContext } from "../../providers/AuthProvider";
 
 const Regsiter = () => {
+  // call context for createUser data
+  const { createUser } = useContext(AuthContext);
+
   const handleRegister = (e) => {
     e.preventDefault();
     console.log(e.currentTarget);
     const form = new FormData(e.currentTarget);
-    const name = form.get('name');
-    const photo= form.get('photo');
-    const email= form.get('email');
-    const password = form.get('password');
-    console.log(name, email, photo, password)
+    const name = form.get("name");
+    const photo = form.get("photo");
+    const email = form.get("email");
+    const password = form.get("password");
+    console.log(name, email, photo, password);
+
+    // create user functioncall from authProdvider 
+    createUser(email, password)
+      .then((res) => {
+        console.log(res.user);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   return (
