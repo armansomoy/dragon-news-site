@@ -1,15 +1,30 @@
-import React from "react";
+import React, { useContext } from "react";
 import Header from "../Shared/Header/Header";
 import { Link } from "react-router-dom";
 import Navbar from "../Shared/Navbar/Navbar";
+import { AuthContext } from "../../providers/AuthProvider";
 
 const Login = () => {
+  // fetch data from AuhtProvider using useContext
+  const { signIn } = useContext(AuthContext);
+
+  // login eventHandler
   const handleLogin = (e) => {
     e.preventDefault();
-    console.log(e.currentTarget);
+
+    // get data from login from
     const form = new FormData(e.currentTarget);
-    console.log(form.get("email"));
-    console.log(form.get("pass"));
+    const email = form.get("email");
+    const password = form.get("password");
+
+    // signIn User
+    signIn(email, password)
+      .then((res) => {
+        console.log(res.user);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   return (
